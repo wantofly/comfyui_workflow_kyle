@@ -1,0 +1,900 @@
+{
+  "last_node_id": 27,
+  "last_link_id": 38,
+  "nodes": [
+    {
+      "id": 4,
+      "type": "StringToInt",
+      "pos": [
+        1310,
+        240
+      ],
+      "size": [
+        320,
+        60
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "string",
+          "type": "STRING",
+          "link": 3,
+          "widget": {
+            "name": "string"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            12
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringToInt"
+      },
+      "widgets_values": [
+        "0"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "Int Literal",
+      "pos": [
+        1310,
+        370
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "INT",
+          "type": "INT",
+          "links": [
+            13
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Int Literal"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 8,
+      "type": "ImpactCompare",
+      "pos": [
+        1690,
+        280
+      ],
+      "size": [
+        210,
+        80
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "a",
+          "type": "INT",
+          "link": 12
+        },
+        {
+          "name": "b",
+          "type": "INT",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "BOOLEAN",
+          "type": "BOOLEAN",
+          "links": [
+            37
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactCompare"
+      },
+      "widgets_values": [
+        "a = b"
+      ]
+    },
+    {
+      "id": 1,
+      "type": "OllamaVision",
+      "pos": [
+        800,
+        240
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "type": "STRING",
+          "links": [
+            2
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaVision"
+      },
+      "widgets_values": [
+        "describe the image, if it contain one man then just return 1, else return 0. don't explain why, and only return 1 or 0.",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llava"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1070,
+        40
+      ],
+      "size": [
+        210,
+        110
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 2,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            3
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " 0 "
+      ]
+    },
+    {
+      "id": 10,
+      "type": "If ANY execute A else B",
+      "pos": [
+        1970,
+        280
+      ],
+      "size": {
+        "0": 210,
+        "1": 66
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "ANY",
+          "type": "*",
+          "link": 37
+        },
+        {
+          "name": "IF_TRUE",
+          "type": "*",
+          "link": 38
+        },
+        {
+          "name": "IF_FALSE",
+          "type": "*",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "?",
+          "type": "*",
+          "links": [
+            22,
+            27
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "If ANY execute A else B"
+      }
+    },
+    {
+      "id": 16,
+      "type": "LoadImage",
+      "pos": [
+        1630,
+        -80
+      ],
+      "size": [
+        260,
+        230
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            25,
+            29
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00000-4256195282.jpeg",
+        "image"
+      ]
+    },
+    {
+      "id": 11,
+      "type": "PlaySound|pysssss",
+      "pos": [
+        2240,
+        180
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "any",
+          "type": "*",
+          "link": 27
+        }
+      ],
+      "outputs": [
+        {
+          "name": "*",
+          "type": "*",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PlaySound|pysssss"
+      },
+      "widgets_values": [
+        "always",
+        0.2,
+        "notify.mp3"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "PreviewImage",
+      "pos": [
+        2250,
+        340
+      ],
+      "size": [
+        210,
+        250
+      ],
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 22
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "PreviewImage"
+      }
+    },
+    {
+      "id": 21,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1140,
+        1880
+      ],
+      "size": [
+        320,
+        180
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 30,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " Art is a form of self-expression that can take many different forms, such as painting, sculpture, music, dance, and literature. It is a way for artists to express their thoughts, emotions, and experiences through the creation of something new and original. The purpose of art can be to convey ideas or feelings, to entertain, to educate, or simply to create something that is visually appealing or aesthetically pleasing. Ultimately, art is a very personal and subjective thing, and different people may have different opinions about what constitutes \"good\" art. "
+      ]
+    },
+    {
+      "id": 2,
+      "type": "LoadImage",
+      "pos": [
+        -10,
+        550
+      ],
+      "size": [
+        320,
+        310
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            1,
+            31,
+            38
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00000 (1).png",
+        "image"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "OllamaGenerate",
+      "pos": [
+        660,
+        1870
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            30
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaGenerate"
+      },
+      "widgets_values": [
+        "What is Art?",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llava"
+      ]
+    },
+    {
+      "id": 23,
+      "type": "ShowText|pysssss",
+      "pos": [
+        610,
+        1200
+      ],
+      "size": [
+        560,
+        330
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 32,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            33
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " The image is a portrait-style photograph of a woman posing for the camera. She appears to be in her mid to late twenties, with a fair complexion and is wearing makeup that includes eyeliner and lipstick. Her hair is styled straight and long.\n\nThe woman is dressed in an elegant evening gown with intricate floral patterns on the bodice and sleeves. The gown has a fitted waist and full skirt, which suggests a formal or celebratory occasion. She is also wearing earrings and has her nails painted.\n\nHer pose is poised and confident; she stands with one hand placed near her hip and the other arm bent slightly at her side. She is looking directly at the camera with a subtle smile on her face, which gives an impression of approachability.\n\nIn terms of the art style, it appears to be a contemporary portrait with a focus on the individual. The lighting is soft, highlighting the contours and textures of the subject's attire and features. The background is neutral, ensuring that the viewer's attention remains on the woman. The overall aesthetic of the image suggests that it might have been taken at an event or for a professional photoshoot given the formal attire and the posed nature of the shot. "
+      ]
+    },
+    {
+      "id": 22,
+      "type": "OllamaVision",
+      "pos": [
+        610,
+        820
+      ],
+      "size": [
+        550,
+        250
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 31
+        }
+      ],
+      "outputs": [
+        {
+          "name": "description",
+          "type": "STRING",
+          "links": [
+            32
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaVision"
+      },
+      "widgets_values": [
+        "describe the image, and this is for midjourney prompt, describe each details, also include art style, if it is a photo then describe photo specifics, if image contain a women, describe her age and beauty and skin",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llava"
+      ]
+    },
+    {
+      "id": 25,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1280,
+        830
+      ],
+      "size": [
+        540,
+        230
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 34,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            35
+          ],
+          "shape": 6,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        "you are a bot for extracting image tags for image generation in midjourney, only return comma seperated tag list:, The image is a portrait-style photograph of a woman posing for the camera. She appears to be in her mid to late twenties, with a fair complexion and is wearing makeup that includes eyeliner and lipstick. Her hair is styled straight and long.\n\nThe woman is dressed in an elegant evening gown with intricate floral patterns on the bodice and sleeves. The gown has a fitted waist and full skirt, which suggests a formal or celebratory occasion. She is also wearing earrings and has her nails painted.\n\nHer pose is poised and confident; she stands with one hand placed near her hip and the other arm bent slightly at her side. She is looking directly at the camera with a subtle smile on her face, which gives an impression of approachability.\n\nIn terms of the art style, it appears to be a contemporary portrait with a focus on the individual. The lighting is soft, highlighting the contours and textures of the subject's attire and features. The background is neutral, ensuring that the viewer's attention remains on the woman. The overall aesthetic of the image suggests that it might have been taken at an event or for a professional photoshoot given the formal attire and the posed nature of the shot. "
+      ]
+    },
+    {
+      "id": 24,
+      "type": "StringFunction|pysssss",
+      "pos": [
+        1280,
+        1200
+      ],
+      "size": [
+        520,
+        310
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text_b",
+          "type": "STRING",
+          "link": 33,
+          "widget": {
+            "name": "text_b"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            34
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "StringFunction|pysssss"
+      },
+      "widgets_values": [
+        "append",
+        "yes",
+        "you are a bot for extracting image tags for image generation in midjourney, only return comma seperated tag list:",
+        "",
+        "",
+        "you are a bot for extracting image tags for image generation in midjourney, only return comma seperated tag list:, The image is a portrait-style photograph of a woman posing for the camera. She appears to be in her mid to late twenties, with a fair complexion and is wearing makeup that includes eyeliner and lipstick. Her hair is styled straight and long.\n\nThe woman is dressed in an elegant evening gown with intricate floral patterns on the bodice and sleeves. The gown has a fitted waist and full skirt, which suggests a formal or celebratory occasion. She is also wearing earrings and has her nails painted.\n\nHer pose is poised and confident; she stands with one hand placed near her hip and the other arm bent slightly at her side. She is looking directly at the camera with a subtle smile on her face, which gives an impression of approachability.\n\nIn terms of the art style, it appears to be a contemporary portrait with a focus on the individual. The lighting is soft, highlighting the contours and textures of the subject's attire and features. The background is neutral, ensuring that the viewer's attention remains on the woman. The overall aesthetic of the image suggests that it might have been taken at an event or for a professional photoshoot given the formal attire and the posed nature of the shot. "
+      ]
+    },
+    {
+      "id": 27,
+      "type": "ShowText|pysssss",
+      "pos": [
+        1910,
+        1200
+      ],
+      "size": [
+        520,
+        280
+      ],
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 36,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": null,
+          "shape": 6
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "",
+        " portrait-style photograph, woman, mid to late twenties, fair complexion, makeup, eyeliner, lipstick, straight and long hair, evening gown, intricate floral patterns, fitted waist, full skirt, formal or celebratory occasion, earrings, nails painted, poised, confident, soft lighting, neutral background, contemporary portrait, individual, event, professional photoshoot "
+      ]
+    },
+    {
+      "id": 26,
+      "type": "OllamaGenerate",
+      "pos": [
+        1940,
+        860
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 35,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "response",
+          "type": "STRING",
+          "links": [
+            36
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "OllamaGenerate"
+      },
+      "widgets_values": [
+        "What is Art?",
+        "enable",
+        "http://127.0.0.1:11434",
+        "llava"
+      ]
+    }
+  ],
+  "links": [
+    [
+      1,
+      2,
+      0,
+      1,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      1,
+      0,
+      3,
+      0,
+      "STRING"
+    ],
+    [
+      3,
+      3,
+      0,
+      4,
+      0,
+      "STRING"
+    ],
+    [
+      12,
+      4,
+      0,
+      8,
+      0,
+      "INT"
+    ],
+    [
+      13,
+      7,
+      0,
+      8,
+      1,
+      "INT"
+    ],
+    [
+      22,
+      10,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      25,
+      16,
+      0,
+      10,
+      2,
+      "*"
+    ],
+    [
+      27,
+      10,
+      0,
+      11,
+      0,
+      "*"
+    ],
+    [
+      29,
+      16,
+      0,
+      17,
+      0,
+      "IMAGE"
+    ],
+    [
+      30,
+      20,
+      0,
+      21,
+      0,
+      "STRING"
+    ],
+    [
+      31,
+      2,
+      0,
+      22,
+      0,
+      "IMAGE"
+    ],
+    [
+      32,
+      22,
+      0,
+      23,
+      0,
+      "STRING"
+    ],
+    [
+      33,
+      23,
+      0,
+      24,
+      0,
+      "STRING"
+    ],
+    [
+      34,
+      24,
+      0,
+      25,
+      0,
+      "STRING"
+    ],
+    [
+      35,
+      25,
+      0,
+      26,
+      0,
+      "STRING"
+    ],
+    [
+      36,
+      26,
+      0,
+      27,
+      0,
+      "STRING"
+    ],
+    [
+      37,
+      8,
+      0,
+      10,
+      0,
+      "*"
+    ],
+    [
+      38,
+      2,
+      0,
+      10,
+      1,
+      "*"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "提取图片关键词",
+      "bounding": [
+        525,
+        711,
+        1969,
+        868
+      ],
+      "color": "#3f789e",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {},
+  "version": 0.4
+}
