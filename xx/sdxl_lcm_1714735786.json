@@ -1,40 +1,7 @@
 {
-  "last_node_id": 13,
-  "last_link_id": 25,
+  "last_node_id": 15,
+  "last_link_id": 26,
   "nodes": [
-    {
-      "id": 5,
-      "type": "EmptyLatentImage",
-      "pos": [
-        518,
-        613
-      ],
-      "size": {
-        "0": 315,
-        "1": 106
-      },
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            2
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "EmptyLatentImage"
-      },
-      "widgets_values": [
-        1024,
-        1024,
-        1
-      ]
-    },
     {
       "id": 10,
       "type": "LoraLoader",
@@ -43,8 +10,8 @@
         130
       ],
       "size": {
-        "0": 315,
-        "1": 126
+        "0": 320,
+        "1": 130
       },
       "flags": {},
       "order": 2,
@@ -92,82 +59,6 @@
       ]
     },
     {
-      "id": 7,
-      "type": "CLIPTextEncode",
-      "pos": [
-        413,
-        389
-      ],
-      "size": {
-        "0": 425.27801513671875,
-        "1": 180.6060791015625
-      },
-      "flags": {},
-      "order": 5,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 24
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            6
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "text, watermark, "
-      ]
-    },
-    {
-      "id": 6,
-      "type": "CLIPTextEncode",
-      "pos": [
-        415,
-        186
-      ],
-      "size": {
-        "0": 422.84503173828125,
-        "1": 164.31304931640625
-      },
-      "flags": {},
-      "order": 4,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 23
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "type": "CONDITIONING",
-          "links": [
-            4
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        "masterpiece, best quality, evening sunset scenery blue sky nature,  1girl, sexy, "
-      ]
-    },
-    {
       "id": 11,
       "type": "ModelSamplingDiscrete",
       "pos": [
@@ -175,8 +66,8 @@
         50
       ],
       "size": {
-        "0": 315,
-        "1": 82
+        "0": 320,
+        "1": 80
       },
       "flags": {},
       "order": 3,
@@ -208,53 +99,6 @@
       ]
     },
     {
-      "id": 4,
-      "type": "CheckpointLoaderSimple",
-      "pos": [
-        -452,
-        135
-      ],
-      "size": [
-        429,
-        106
-      ],
-      "flags": {},
-      "order": 1,
-      "mode": 0,
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            10
-          ],
-          "slot_index": 0
-        },
-        {
-          "name": "CLIP",
-          "type": "CLIP",
-          "links": [
-            11
-          ],
-          "slot_index": 1
-        },
-        {
-          "name": "VAE",
-          "type": "VAE",
-          "links": [
-            20
-          ],
-          "slot_index": 2
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "CheckpointLoaderSimple"
-      },
-      "widgets_values": [
-        "XX\\juggernautXL_v9-Lightning_4S_V9 + RDPhoto 2.safetensors"
-      ]
-    },
-    {
       "id": 8,
       "type": "VAEDecode",
       "pos": [
@@ -263,7 +107,7 @@
       ],
       "size": {
         "0": 210,
-        "1": 46
+        "1": 50
       },
       "flags": {},
       "order": 7,
@@ -296,15 +140,242 @@
       }
     },
     {
+      "id": 3,
+      "type": "KSampler",
+      "pos": [
+        863,
+        186
+      ],
+      "size": {
+        "0": 320,
+        "1": 260
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 22
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 4
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 6
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            7
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        927793690044900,
+        "randomize",
+        5,
+        1.8,
+        "lcm",
+        "sgm_uniform",
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -452,
+        135
+      ],
+      "size": {
+        "0": 430,
+        "1": 110
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            10
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            11
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            20
+          ],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "XX\\MR 3DQ _SDXL V0.2.safetensors"
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        413,
+        389
+      ],
+      "size": {
+        "0": 430,
+        "1": 180
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            6
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "EasyNegative FastNegativeV2 bad-artist-anime bad-hands-5 aid291 an5 NegfeetV2"
+      ]
+    },
+    {
+      "id": 14,
+      "type": "EmptyLatentImageFromPresetsSDXL",
+      "pos": [
+        510,
+        620
+      ],
+      "size": {
+        "0": 320,
+        "1": 120
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            26
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "w",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "h",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImageFromPresetsSDXL"
+      },
+      "widgets_values": [
+        " 832 x 1216",
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        415,
+        186
+      ],
+      "size": {
+        "0": 420,
+        "1": 160
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            4
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "masterpiece, best quality,best quality,official art,extremely detailed CG unity 8k wallpaper,(1girl:1.3), cute face, blush, black eyes, pink eyeshadow,flat chest,hanfu, (Out of the shoulders),pendant, jewelry, jewelry, (earrings:1.1), (bell:1.1), (necklace:1.1), Hand on chest,hair_ornament, hair_flower,Bright necklace, Out of the shoulders,Perfect hand,(collarbone:1.1),cleavage, (Shoulder trim:1.2), (Chest decoration:1.3), Look to the sky, (Look the other way:1.2),(Fineskindetails:1.1),mix4,machinery,Open chest, ,"
+      ]
+    },
+    {
       "id": 13,
       "type": "Image Save",
       "pos": [
-        1507,
-        -215
+        1480,
+        -370
       ],
       "size": [
-        784.0604695815882,
-        1190.3191317187068
+        770,
+        1360
       ],
       "flags": {},
       "order": 8,
@@ -334,76 +405,9 @@
         "true",
         "true"
       ]
-    },
-    {
-      "id": 3,
-      "type": "KSampler",
-      "pos": [
-        863,
-        186
-      ],
-      "size": {
-        "0": 315,
-        "1": 262
-      },
-      "flags": {},
-      "order": 6,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 22
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 4
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 6
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "LATENT",
-          "type": "LATENT",
-          "links": [
-            7
-          ],
-          "slot_index": 0
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "KSampler"
-      },
-      "widgets_values": [
-        749740203695657,
-        "randomize",
-        5,
-        1.8,
-        "lcm",
-        "sgm_uniform",
-        1
-      ]
     }
   ],
   "links": [
-    [
-      2,
-      5,
-      0,
-      3,
-      3,
-      "LATENT"
-    ],
     [
       4,
       6,
@@ -491,6 +495,14 @@
       13,
       0,
       "IMAGE"
+    ],
+    [
+      26,
+      14,
+      0,
+      3,
+      3,
+      "LATENT"
     ]
   ],
   "groups": [],
